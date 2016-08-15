@@ -1,0 +1,13 @@
+env/** 
+pastpapers.sln
+pastpapers.pyproj
+config.pyc
+index.pyc
+
+models/__init__.pyc
+models/course.pyc
+models/department.pyc
+models/paper.pyc
+models/unit.pyc
+
+.vs/**
