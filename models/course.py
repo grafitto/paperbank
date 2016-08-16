@@ -8,8 +8,9 @@ class Course(db.Model):
     department_id = db.Column(db.Integer, db.ForeignKey('department.id'))
     department = db.relationship('Department', backref = db.backref('course', lazy = 'dynamic')) 
 
-    def __init__(self, title):
+    def __init__(self, title, department):
         self.title = title
+        self.department = department
 
     def __repr__(self):
         return self.title
