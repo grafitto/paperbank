@@ -11,3 +11,5 @@ class Department(db.Model):
 
     def __repr__(self):
         return self.title
+
+    __str__ = __repr__
