@@ -1,0 +1,18 @@
+﻿{% extends "partials/base.html" %}
+{% block content %}
+    <div class="row">
+        <nav class="col-xs-3 menu" style="height: 80%">
+            <ul>
+                {% with departments = deps %}
+                    {% if departments %}
+                        {% for department in departments %}
+                            <li class="withripple" data-target="#about">{{ department.title }}<div class="ripple-container"></div></li>
+                        {% endfor %}
+                    {% else %}
+                            <p class="text-muted">There are no departments to display</p>
+                    {% endif %}
+                {% endwith %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

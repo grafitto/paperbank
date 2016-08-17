@@ -9,5 +9,7 @@ models/course.pyc
 models/department.pyc
 models/paper.pyc
 models/unit.pyc
+models/admin.pyc
 
 .vs/**
+node_modules/**
