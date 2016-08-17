@@ -3,29 +3,12 @@ from config import db
 from models import * 
 import flask_restless as fl
 
-#This creates default departments
-@app.route('/departments/default')
-def departments():
-    department_titles = ["Religion Department", "Mass Communication Department", "Computer and Information Technology Department", "Education Department", "Environment and Natural Resource Management", "PUP Department", "Counseling Department"]
-    for title in department_titles:
-        d = Department(title)
-        db.session.add(d)
-    db.session.commit()
-    return "Done"
+import admin
 
-#This creates default courses
-@app.route("/courses/default")
-def courses():
-    courses = {"Computer and Information Technology Department":["Masters of Science in Applied IT", "Bachalor of Computer Science","Diploma in Information Technology", "Diploma in Mobile Computing", "Bachelor of Business and Information Technology", "Cisco Certified Network Associate, Level 1 - 4", "Certificate in information Technology"]}
-    departments = Department.query.all()
-    h = ""
-    for department in departments:
-        if courses[department.title] is not None:
-            for course in courses[department.title]:
-                c = Course(course, department)
-                db.session.add(c)
-        db.session.commit()
-    return "Done"
+@app.route("/debug")
+def debug():
+    admin = Admin.query.filter_by(email = "nderitukelvin19@gmail.com").first()
+    return str(admin)
 
 db.create_all()
 
