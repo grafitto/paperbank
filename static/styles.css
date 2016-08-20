@@ -16,10 +16,12 @@
     background-size: cover;
 }
 body{
-    margin: 0px;
-    padding: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
 }
-
+.main{
+ 
+}
 
 * {
     box-sizing: border-box;
@@ -49,6 +51,7 @@ body{
 .menu {
     overflow: auto;
     padding: 0;
+    border-right: solid 2px #d5d5d5;
 }
 
 .menu, .menu * {
@@ -78,6 +81,8 @@ body{
 .menu ul li a {
     color: rgb(51, 51, 51);
     text-decoration: none;
+    width: 100%;
+    display: inline-block;
 }
 
 .pages {

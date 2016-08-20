@@ -5,6 +5,7 @@ class Paper(db.Model):
     __tablename__ = 'paper'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), unique=True)
+    year = db.Column(db.String(255))
     lecturer = db.Column(db.String(255))
     trimester = db.Column(db.String(255))
 

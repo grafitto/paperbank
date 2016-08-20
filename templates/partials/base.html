@@ -11,8 +11,8 @@
 
 </head>
 <body>
-    <div class="container-fluid">
-        <header class="navbar navbar-default">
+    <div class="container">
+        <header class="navbar navbar-default" style="margin-top: 0px">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -25,28 +25,25 @@
                 <div class="navbar-collapse collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="#" data-target="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">
                                 Vault
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="javascript:void(0)">Action</a></li>
-                                <li><a href="javascript:void(0)">Another action</a></li>
-                                <li><a href="javascript:void(0)">Something else here</a></li>
+                                <li><a href="javascript:void(0)">Statistics</a></li>
                                 <li class="divider"></li>
-                                <li><a href="javascript:void(0)">Separated link</a></li>
+                                <li><a href="javascript:void(0)">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </header>
-        {% block content %}
-
-        {% endblock %}
+        {% block sidebar %}{% endblock %}
     </div>
 
     <script src="{{ url_for("static", filename = "js/jquery.min.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/bootstrap.min.js") }}"></script>
     <script src="{{ url_for("static", filename = "js/material.min.js") }}"></script>
     <script src="{{ url_for("static", filename = "js/ripples.min.js") }}"></script>
     <script>
