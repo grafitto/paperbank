@@ -13,3 +13,11 @@ models/admin.pyc
 
 .vs/**
 node_modules/**
+/pastpapers1.pyproj
+/__init__.pyc
+admin.pyc
+admin.pyc
+settings.pyc
+pastpapers1.pyproj.user
+*.pyc
+utilities/utilities.pyc
