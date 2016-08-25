@@ -5,12 +5,17 @@ import flask_restless as fl
 
 import admin
 
-@app.route("/debug")
-def debug():
-    admin = Admin.query.filter_by(email = "nderitukelvin19@gmail.com").first()
-    return str(admin)
-
 db.create_all()
+
+#This serves all angular partials
+@app.route('/partials/<path:path>')
+def serve_partial(path):
+    return admin.render_template('/client/partials/{}'.format(path))
+
+#This kickstarts the client app
+@app.route('/')
+def index():
+    return admin.render_template("client/index.html")
 
 manager = fl.APIManager(app, flask_sqlalchemy_db = db)
 
