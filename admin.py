@@ -18,12 +18,12 @@ def admin_magic():
             flash(Utilities.magic_word_random_flash())
             return redirect(url_for('admin_magic'))
     else:
-        return render_template("login.html")
+        return render_template("admin/login.html")
 
 @app.route("/admin/upload")
 def admin_upload_paper():
     departments = Department.query.all()
-    return render_template('paper.html', deps = departments)
+    return render_template('admin/paper.html', deps = departments)
 
 @app.route("/admin/course", methods = ["POST", "GET"])
 def admin_create_course():
@@ -40,7 +40,7 @@ def admin_create_course():
         
     else:
         departments = Department.query.all()
-        return render_template('course.html', deps = departments)
+        return render_template('admin/course.html', deps = departments)
 
 @app.route("/admin/unit", methods = ["POST", "GET"])
 def admin_create_unit():
@@ -59,7 +59,7 @@ def admin_create_unit():
         return redirect(url_for("admin_create_unit"))
     else:
         departments = Department.query.all()
-        return render_template("unit.html", deps = departments)
+        return render_template("admin/unit.html", deps = departments)
 
 @app.route("/upload/paper", methods=["POST"])
 def upload_paper():
