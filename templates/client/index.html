@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link href="{{ url_for('static',filename = 'styles.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename = 'css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename = 'css/bootstrap-material-design.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename = 'css/ripples.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename = 'css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename = 'css/dashboard.css') }}" rel="stylesheet" />
+    <title>PaperBank</title>
+</head>
+
+<body ng-app="app">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Paper Bank</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div ng-view></div>
+    </div>
+    <script src="{{ url_for("static", filename = "js/jquery.min.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/bootstrap.min.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/material.min.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/ripples.min.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/angular.min.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/client/angular-route.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/client/app.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/client/server.js") }}"></script>
+    <script src="{{ url_for("static", filename = "js/client/controllers.js") }}"></script>
+    <script>
+        $.material.init()
+    </script>
+</body>
+</html>

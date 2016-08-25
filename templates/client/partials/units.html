@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <div class="col-sm-3 col-md-3 sidebar">
+        <ul class="nav nav-sidebar">
+            <li ng-repeat="department in departments">
+                <p href="#" id="btn-1" data-toggle="collapse" data-target="#submenu{{"{{department.id}}" }}" aria-expanded="false">{{"{{ department.title }}"}}</p>
+                <ul class="nav collapse" id="submenu{{"{{department.id}}" }}" role="menu" aria-labelledby="btn-1">
+                    <li style="padding-left: 30px" ng-repeat="course in department.course"><a href="#">{{"{{ course.title }}"}}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
+        <div class="form-group label-floating">
+            <label for="i5" class="control-label">label-floating</label>
+            <input type="email" class="form-control" id="i5">
+            <span class="help-block">This is a hint as a <code>span.help-block.hint</code></span>
+        </div>
+        <h1 class="page-header">Dashboard</h1>
+    </div>
+</div>

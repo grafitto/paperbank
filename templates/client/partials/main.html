@@ -1,0 +1,24 @@
+﻿<div class="row">
+    <div class="col-sm-3 col-md-3 sidebar">
+        <ul class="nav nav-sidebar">
+            <li ng-repeat="department in departments">
+                <p href="#" id="btn-1" data-toggle="collapse" data-target="#submenu{{"{{department.id}}"}}" aria-expanded="false">{{"{{ department.title }}"}}</p>
+                <ul class="nav collapse" id="submenu{{"{{department.id}}"}}" role="menu" aria-labelledby="btn-1">
+                    <li style="padding-left: 30px"ng-repeat="course in department.course"><a href="#" ng-click="getUnits({{"course.id"}})">{{"{{ course.title }}"}}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
+        <div class="form-group label-placeholder">
+            <label for="i5p" class="control-label">Search any paper</label>
+            <input type="email" class="form-control" id="i5p" placeholder="Search all papers">
+        </div>
+
+        <h1 class="page-header" ng-bind="course.title">Dashboard</h1>
+        <p class="col-md-12 text-center" ng-show="unitsEmpty">
+            <div class="col-md-12 text-center color-default" style="font-size: 7em"><i class="fa fa-paperclip" aria-hidden="true"></i></div>
+            <div class="col-md-12 text-center">No units found</div>
+        </p>
+    </div>
+</div>
