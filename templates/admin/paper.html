@@ -1,0 +1,105 @@
+﻿{%extends 'admin/partials/base.html'%}
+{% block content %}
+<div class="container" ng-controller="PaperController">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-dismissible alert-{{ message.type }}"style="width: 96%">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>Attention!</strong>
+                    {{ message.message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="col-md-12">
+        <form name="form" ng-init="init()" action="/upload/paper" method="post" enctype="multipart/form-data">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <select ng-model="data.selectedDepartment" class="form-control" ng-change="departmentOnChange()" name="department_id" convert-to-number required>
+                                    {% for department in deps %}
+                                    <option value="{{department.id}}">{{department.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="department">Courses</label>
+                                <select name="course_id" id="myCourse" ng-options="course.title for course in courses track by course.id" ng-model="data.selectedCourse" ng-change="courseOnChange()" class="form-control" required></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="department">Unit</label>
+                                <select name="unit_id" id="myCourse" ng-options="unit.title for unit in units track by unit.id" ng-model="data.selectedUnit" class="form-control" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="department">Lecturer</label>
+                                <input type="text" name="lecturer" id="myLecturer" ng-model="data.lecturer" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="department">Year</label>
+                                <select name="year" id="myYear" ng-options="year for year in years track by year" ng-model="data.selectedYear" class="form-control" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="department">Semester</label>
+                                <select name="trimester" class="form-control" required>
+                                    <option value=""></option>
+                                    <option value="January">January</option>
+                                    <option value="May">May</option>
+                                    <option value="September">September</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="inputFile2">File</label>
+                            <input type="file" id="inputFile" name="paper">
+                            <input type="text" readonly="" class="form-control" placeholder="Browse...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="rename" value="True"> Rename paper
+                                </label>
+                            </div>
+                            <p class="help-block">If checked, the file will be renamed to the default naming convention</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-fab pull-right" type="submit"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
