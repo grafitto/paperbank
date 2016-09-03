@@ -9,6 +9,15 @@ app.controller("MainController", ["$scope", "$rootScope", "Server", function ($s
     $scope.isSearch = false;
     $scope.papers = [];
 
+    $scope.$on('$viewContentLoaded', function(){
+        Server.departmentsPopulate()
+            .then(function (resp) {
+                $scope.departments = resp.objects;
+            }, function (err) {
+                console.log("Error");
+                console.log(err);
+            })
+    });
     $scope.search = function(){
         let q = $("#q").val();
         q = "%" + q + "%";
