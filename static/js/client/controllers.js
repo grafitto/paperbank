@@ -13,6 +13,7 @@ app.controller("MainController", ["$scope", "$rootScope", "Server", function ($s
         Server.departmentsPopulate()
             .then(function (resp) {
                 $scope.departments = resp.objects;
+                console.log("Fetching departments...");
             }, function (err) {
                 console.log("Error");
                 console.log(err);
