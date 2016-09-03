@@ -19,10 +19,10 @@ def index():
 
 manager = fl.APIManager(app, flask_sqlalchemy_db = db)
 
-manager.create_api(Paper, methods = ["GET", "POST", "PUT", "PATCH", "DELETE"])
-manager.create_api(Course, methods = ["GET", "POST", "PUT", "PATCH"])
-manager.create_api(Department, methods = ["GET", "PUT", "POST", "PATCH"])
-manager.create_api(Unit, methods = ["GET", "PUT", "PATCH", "DELETE", "POST"])
+manager.create_api(Paper, methods = ["GET"])
+manager.create_api(Course, methods = ["GET"])
+manager.create_api(Department, methods = ["GET"])
+manager.create_api(Unit, methods = ["GET"])
 
 #Fire that thing
 if __name__ == "__main__":
