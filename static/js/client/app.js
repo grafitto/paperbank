@@ -18,7 +18,7 @@ app.config(['$routeProvider',function($routeProvider) {
 		
     });
 
-    Server.departments()
+    Server.departmentsPopulate()
        .then(function (resp) {
            $rootScope.departments = resp.objects;
        }, function (err) {
@@ -30,7 +30,7 @@ app.config(['$routeProvider',function($routeProvider) {
     return {
         restrict: 'E',
         link: function (scope, elem, attrs) {
-            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+            if (attrs.ngClick) {
                 elem.on('click', function (e) {
                     e.preventDefault();
                 });
