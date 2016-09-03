@@ -2,7 +2,7 @@
     <div class="col-sm-3 col-md-3 sidebar">
         <ul class="nav nav-sidebar">
             <li ng-repeat="department in departments">
-                <p href="#" id="btn-1" data-toggle="collapse" data-target="#submenu{{"{{department.id}}"}}" aria-expanded="false">{{"{{ department.title }}"}}</p>
+                <p href="#" id="btn-1" data-toggle="collapse" ng-click="populateBreadCrumb({{"department.title"}})" data-target="#submenu{{"{{department.id}}"}}" aria-expanded="false">{{"{{ department.title }}"}}</p>
                 <ul class="nav collapse" id="submenu{{"{{department.id}}"}}" role="menu" aria-labelledby="btn-1">
                     <li style="padding-left: 30px"ng-repeat="course in department.course"><a href="#" ng-click="getUnits({{"course.id"}})">{{"{{ course.title }}"}}</a></li>
                 </ul>
@@ -11,14 +11,60 @@
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
         <div class="form-group label-placeholder">
-            <label for="i5p" class="control-label">Search any paper</label>
-            <input type="email" class="form-control" id="i5p" placeholder="Search all papers">
+            <label for="i5p" class="control-label"></label>
+            <input type="text" autocomplete="off" class="form-control" id="q" placeholder="Search all papers (Faster)" ng-keyup="search(q)" ng-model="q" name="q">
         </div>
 
-        <h1 class="page-header" ng-bind="course.title">Dashboard</h1>
-        <p class="col-md-12 text-center" ng-show="unitsEmpty">
-            <div class="col-md-12 text-center color-default" style="font-size: 7em"><i class="fa fa-paperclip" aria-hidden="true"></i></div>
-            <div class="col-md-12 text-center">No units found</div>
-        </p>
-    </div>
-</div>
+        <ul class="breadcrumb" style="margin-bottom: 5px;">
+            <li><a href="javascriot:void(0)">Home</a></li>
+          <li ng-repeat="c in breadCrumb"><a href="javascript:void(0)">{{"{{ c }}"}}</a></li>
+        </ul>
+        <div class="col-md-12 text-center" ng-show="unitsEmpty">
+            <div class="col-md-12 text-center color-default" style="font-size: 7em; color: #808080"><i class="fa fa-paperclip" aria-hidden="true"></i></div>
+            <div class="col-md-12 text-center" style="font-size: 3em; color: #808080">No units found</div>
+        </div>
+        <div ng-hide="unitsEmpty==true || isSearch==true" class="col-md-12">
+           <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+              <li ng-repeat="unit in course.unit"><a ng-click="preventDefaultA()" href="#unit{{"{{ unit.id}}"}}" data-toggle="tab">{{"{{ unit.code }}"}}</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in" ng-repeat="unit in course.unit" id="unit{{"{{ unit.id }}"}}">
+                    <div class="list-group" ng-repeat="paper in unit.paper">
+                      <div class="list-group-item">
+                        <div class="row-action-primary">
+                          <i class="material-icons">pdf</i>
+                        </div>
+                        <div class="row-content">
+                            <div class="row">
+                                <h4 class="list-group-item-heading">{{"{{ paper.title }}"}} <span class="pull-right"><i class="fa fa-cloud-download" aria-hidden="true"></i></span></h4>
+                                <p class="list-group-item-text">{{"{{ paper.lecturer }}"}} {{"{{ paper.trimester }}"}} {{"{{ paper.year }}"}}</p>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="list-group-separator"></div>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+                <div ng-show="isSearch" class="col-md-12" style="padding-left: 0px; padding-right: 0px">
+                     <div class="list-group" ng-repeat="paper in papers">
+                      <div class="list-group-item">
+                        <div class="row-action-primary">
+                          <i class="material-icons">pdf</i>
+                        </div>
+                        <div class="row-content">
+                            <div class="row">
+                                <h4 class="list-group-item-heading">{{"{{ paper.title }}"}} <span class="pull-right"><i class="fa fa-cloud-download" aria-hidden="true"></i></span></h4>
+                                <p class="list-group-item-text">{{"{{ paper.lecturer }}"}} {{"{{ paper.trimester }}"}} {{"{{ paper.year }}"}}</p>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="list-group-separator"></div>
+                </div>
+                </div>
+                <div class="col-md-12 text-center" ng-show="loading">
+                    <div class="col-md-12 text-center color-default" style="font-size: 3em; color: #808080"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></div>
+                    <div class="col-md-12 text-center" style="font-size: 3em; color: #808080">Loading...</div>
+                </div>
+            </div>
