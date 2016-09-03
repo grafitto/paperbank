@@ -4,7 +4,7 @@ class Config(object):
     DATABASE_URI = 'sqlite://:memory:'
 
 class ProductionConfig(Config):
-    DATABASE_URI = 'mysql+pymysql://be1a28832dc3d6:a4fda910@us-cdbr-iron-east-04.cleardb.net/heroku_0adc8d16ff6feca'
+    DATABASE_URI = 'mysql+pymysql://atlj17scn7w3v8qp:r146i5gq1aq7umid@uoa25ublaow4obx5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/gsayyicxj49vmbfo'
     S3_BUCKET_NAME = "anu.pastpapers"
     AWS_ACCESS_KEY_ID = 'AKIAJVEPXVGPPURXOR3Q'
     AWS_SECRET_ACCESS_KEY = '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'
