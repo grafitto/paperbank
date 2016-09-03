@@ -26,4 +26,5 @@ manager.create_api(Unit, methods = ["GET"])
 
 #Fire that thing
 if __name__ == "__main__":
-    app.run(debug=True)
+    from os import environ
+    app.run(debug=True, port=environ.get("PORT", 5000))
