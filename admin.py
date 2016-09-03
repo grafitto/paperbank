@@ -92,6 +92,10 @@ def upload_paper():
         if rename is not None:
             final_filename = unit.code + " " + unit.title + "(" + trimester[:3] + " " + year + ") - " + lecturer + "." + file.filename.rsplit('.', 1)[1]
 
+        paper = Paper(final_filename, lecturer, trimester, unit)
+        db.session.add(paper)
+        db.session.commit()
+
         key = department.title + "/" + course.title + "/" + unit.title + "/" + final_filename
 
         f = Utilities.threaded_upload(key, file)
