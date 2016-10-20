@@ -3,6 +3,7 @@
 app.factory("Server", ["$http", "$q", function ($http, $q) {
     let server = {};
     let baseUrl = "/api";
+    
     server.departments = function () {
         let deferred = $q.defer();
         $http.get(baseUrl + "/department")
@@ -62,6 +63,17 @@ app.factory("Server", ["$http", "$q", function ($http, $q) {
                 deferred.resolve(resp);
             })
             .error(function(err){
+                deferred.reject(err);
+            })
+        return deferred.promise;
+    }
+    server.paper = function (id) {
+        let deferred = $q.defer();
+        $http.get(baseUrl + "/paper/" + id)
+            .success(function (resp) {
+                deferred.resolve(resp);
+            })
+            .error(function (err) {
                 deferred.reject(err);
             })
         return deferred.promise;
