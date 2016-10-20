@@ -18,7 +18,8 @@ def index():
 
 manager = fl.APIManager(admin.app, flask_sqlalchemy_db = admin.db)
 
-manager.create_api(Paper, methods = ["GET"])
+manager.create_api(Paper, methods = ["GET"], include_methods = ["download_link"])
+
 manager.create_api(Course, methods = ["GET"])
 manager.create_api(Department, methods = ["GET"])
 manager.create_api(Unit, methods = ["GET"])
@@ -28,4 +29,4 @@ if __name__ == "__main__":
     from os import environ
     arg_port = int(environ.get('PORT', 5000))
     print(arg_port)
-    admin.app.run(host='0.0.0.0', port= arg_port, debug = False, processes = 2)
+    admin.app.run(host='localhost', port= arg_port, debug = True)
