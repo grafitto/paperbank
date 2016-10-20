@@ -98,9 +98,12 @@ def upload_paper():
 
         key = department.title + "/" + course.title + "/" + unit.title + "/" + final_filename
 
-        f = Utilities.threaded_upload(key, file)
-        #flash({"type":"success", "message":key})
-        flash({"type":"success", "message":"Paper '{t}' uploaded successfully".format(t = f)}) 
+        s3 = boto3.resource("s3")
+        
+        #Upload to amazon s3
+        s3.Bucket(ProductionConfig.S3_BUCKET_NAME).put_object(Key = key, Body = file.read())
+
+        flash({"type":"success", "message":"Paper '{t}' uploaded successfully".format(t = final_filename)}) 
         return redirect(url_for("admin_upload_paper"))
     else:
         flash("File type not allowed. Upload 'pdf', 'txt' or 'docs' only")
