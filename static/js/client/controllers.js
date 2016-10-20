@@ -44,6 +44,14 @@ app.controller("MainController", ["$scope", "$rootScope", "Server", function ($s
             Server.course(courseId)
                 .then(function (resp) {
                     $scope.course = resp;
+                    resp.objects.forEach(function(item){
+                        `console.log("item", item);
+                        Server.paper(item.id)
+                            .then(function(resp){
+                                console.log(paper resp", resp);
+                                item.paper = resp.object;
+                            })
+                    })
                     //Populate preadcrump
                     if($scope.breadCrumb.length > 1){
                         let first = $scope.breadCrumb.shift();

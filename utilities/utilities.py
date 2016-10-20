@@ -25,3 +25,8 @@ class Utilities:
     def allowed_file(filename):
         ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'docx'])
         return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+    @staticmethod
+    def download():
+        s3Client = boto3.client('s3')
+        s3Client.generate_presigned_url('get_object', Params = {'Bucket': 'www.mybucket.com', 'Key': 'hello.txt'}, ExpiresIn = 100)
