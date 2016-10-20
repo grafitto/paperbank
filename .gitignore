@@ -21,3 +21,6 @@ settings.pyc
 pastpapers1.pyproj.user
 *.pyc
 utilities/utilities.pyc
+admin.pyc
+*.pyc
+.vscode/launch.json
