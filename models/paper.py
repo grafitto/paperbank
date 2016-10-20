@@ -1,4 +1,6 @@
 import config
+import boto3
+import urllib
 db = config.db
 
 class Paper(db.Model):  
@@ -19,8 +21,13 @@ class Paper(db.Model):
         self.trimester = trimester
         self.unit = unit
 
-    def getDownloadLink():
-        pass
+    def download_link(self):
+        s3Client = boto3.client('s3')
+        key = self.unit.course.department.title + "/" + self.unit.course.title + "/" + self.unit.title + "/" + self.title
+        server = "http://s3-us-west-2.amazonaws.com/anu.pastpapers/";
+        return server + key
+        #return s3Client.generate_presigned_url('get_object', region = 'us-west-2', Params = {'Bucket': 'anu.pastpapers', 'Key': key}, ExpiresIn = 100000)
+        
 
     def __repr__(self):
         return str(self.title)
