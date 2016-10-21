@@ -45,7 +45,7 @@ app.controller("MainController", ["$scope", "$rootScope", "Server", function ($s
                 .then(function (resp) {
                     $scope.course = resp;
                     resp.objects.forEach(function(item){
-                        `console.log("item", item);
+                        console.log("item", item);
                         Server.paper(item.id)
                             .then(function(resp){
                                 console.log(paper resp", resp);
