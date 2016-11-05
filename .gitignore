@@ -17,6 +17,7 @@ node_modules/**
 /__init__.pyc
 admin.pyc
 admin.pyc
+settings.py
 settings.pyc
 pastpapers1.pyproj.user
 *.pyc
