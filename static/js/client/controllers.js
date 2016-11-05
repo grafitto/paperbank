@@ -44,12 +44,13 @@ app.controller("MainController", ["$scope", "$rootScope", "Server", function ($s
             Server.course(courseId)
                 .then(function (resp) {
                     $scope.course = resp;
-                    resp.objects.forEach(function(item){
-                        console.log("item", item);
-                        Server.paper(item.id)
-                            .then(function(resp){
-                                console.log(paper resp", resp);
-                                item.paper = resp.object;
+                    resp.unit.forEach(function(unit){
+                        Server.papersInUnit(unit.id)
+                            .then(function(result){
+                                let papers = result.objects;
+                                papers.forEach(function(paper){
+                                    console.log(paper);
+                                })
                             })
                     })
                     //Populate preadcrump

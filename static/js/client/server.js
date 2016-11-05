@@ -78,5 +78,16 @@ app.factory("Server", ["$http", "$q", function ($http, $q) {
             })
         return deferred.promise;
     }
+    server.papersInUnit = function (id) {
+        let deferred = $q.defer();
+        $http.get(baseUrl + "/unit/" + id + "/paper")
+            .success(function (resp) {
+                deferred.resolve(resp);
+            })
+            .error(function (err) {
+                deferred.reject(err);
+            })
+        return deferred.promise;
+    }
     return server;
 }]);
