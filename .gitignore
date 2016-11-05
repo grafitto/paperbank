@@ -1,18 +1,18 @@
-env/** 
-pastpapers.sln
-pastpapers.pyproj
-config.pyc
-index.pyc
+/env/** 
+/pastpapers.sln
+/pastpapers.pyproj
+/config.pyc
+/index.pyc
 
-models/__init__.pyc
-models/course.pyc
-models/department.pyc
-models/paper.pyc
-models/unit.pyc
-models/admin.pyc
+/models/__init__.pyc
+/models/course.pyc
+/models/department.pyc
+/models/paper.pyc
+/models/unit.pyc
+/models/admin.pyc
 
 .vs/**
-node_modules/**
+/node_modules/**
 /pastpapers1.pyproj
 /__init__.pyc
 /admin.pyc
@@ -20,7 +20,7 @@ node_modules/**
 /settings.pyc
 /pastpapers1.pyproj.user
 *.pyc
-utilities/utilities.pyc
-admin.pyc
+/utilities/utilities.pyc
+/admin.pyc
 *.pyc
 .vscode/launch.json
