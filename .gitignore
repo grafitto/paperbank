@@ -15,11 +15,10 @@ models/admin.pyc
 node_modules/**
 /pastpapers1.pyproj
 /__init__.pyc
-admin.pyc
-admin.pyc
-settings.py
-settings.pyc
-pastpapers1.pyproj.user
+/admin.pyc
+/settings.py
+/settings.pyc
+/pastpapers1.pyproj.user
 *.pyc
 utilities/utilities.pyc
 admin.pyc
